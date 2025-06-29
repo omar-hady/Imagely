@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator | Imagely</title>
+    <link rel="stylesheet" href="../../app/static/css/styles.css">
+    <script src="script.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+</head>
+<body>
+    
+    <section class="image-generator">
+        <div class="content">
+            <h1>AI Image Generator Tool</h1>
+            <p>Convert your text into images within seconds using AI powered Image Generator!</p>
+            <form action="#" class="generate-form">
+                <input type="text" class="prompt-input" placeholder="Describe your thoughts here..." required>
+                <div class="controls">
+                    <select class="img-quantity">
+                        <option value="1">1 Image</option>
+                        <option value="2">2 Images</option>
+                        <option value="3">3 Images</option>
+                        <option value="4" selected>4 Images</option>
+                    </select>
+                    <button type="submit" class="generate-btn">Generate!</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="image-gallery">
+        <div class="image-card">
+            <img src="images/img-1.jpg" alt="image">
+        </div>
+        <div class="image-card">
+            <img src="images/img-2.jpg" alt="image">
+        </div>
+        <div class="image-card">
+            <img src="images/img-3.jpg" alt="image">
+        </div>
+        <div class="image-card">
+            <img src="images/img-4.jpg" alt="image">
+        </div>
+    </section>
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore | Imagely</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='js/explore.js') }}" defer></script>
+</head>
+<body>
+    <header class="pinterest-header">
+        <div class="header-wrapper">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Imagely Logo">
+                <span>Imagely</span>
+            </div>
+            <div class="search-bar-container">
+                <div class="search-box">
+                    <i class="ri-search-line"></i>
+                    <input type="text" placeholder="Search images, ideas..." name="q">
+                </div>
+            </div>
+            <nav class="nav-actions">
+                <a href="/" >Home</a>
+                <a href="/explore" class="active">Explore</a>
+                <a href="/generate">Generate</a>
+                <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="User Avatar" class="avatar">
+            </nav>
+        </div>
+    </header>
+    <main class="explore-main">
+        <h1 class="explore-title">Discover Inspiration</h1>
+        <section class="gallery">
+            <ul class="images"></ul>
+            <button class="load-more">Load More</button>
+        </section>
+    </main>
+    <div class="lightbox">
+        <div class="wrapper">
+            <header>
+                <div class="photographer">
+                    <i class="uil uil-camera"></i>
+                    <span></span>
+                </div>
+                <div class="buttons">
+                    <i class="uil uil-import"></i>
+                    <i class="uil uil-times"></i>
+                </div>
+            </header>
+            <div class="preview-img">
+                <div class="img"><img src="" alt="preview-img"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

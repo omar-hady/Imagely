@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Imagely - {% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- font awesome cdn link -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+    <!-- jquery cdn link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/81d73e8e4d.js" crossorigin="anonymous"></script>
+
+<!-- sign up and logo start -->
+
+<button class="signup">
+    Sign up
+    <div class="arrow-wrapper">
+        <div class="arrow"></div>
+
+    </div>
+</button>
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="">
+
+<!-- sign up and logo end -->
+
+
+    <!-- header section start -->
+<header>
+<!-- navbar start -->
+<nav>
+
+    <ul class="nav-links">
+
+        <li class="nav-link"><a href="/app/templates/index.html" class="active">Home</a></li>
+        <li class="nav-link"><a href="#">Pricing</a></li>
+        <li class="nav-link"><a href="{{ url_for('explore') }}">Explore</a></li>
+        <li class="nav-link"><a href="#">Generate</a></li>
+
+    </ul>
+</nav>
+<!-- navbar end -->
+
+</header>
+    <!-- header section end -->
+
+    {% block content %}{% endblock %}
+
+<!-- footer start -->
+
+  <footer id="footer">
+    <div class="col col1">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" class="footerlogo" alt="">
+      <p>©2025 Imagely. All Rights Reserved.</p>
+    </div>
+    <div class="col col2">
+    <p><a href="#">Home</a></p>
+      <p><a href="{{ url_for('explore') }}">Explore</a></p>
+      <p><a href="#">Generate</a></p>
+      <p><a href="#">Pricing</a></p>
+    </div>
+    <div class="col col3">
+      <p>Privacy Policy</p>
+      <p>Terms of Use</p>
+      <p>Contact Us</p>
+      <p>About</p>
+    </div>
+    <div class="backdrop"></div>
+  </footer>
+
+
+<!-- footer end -->
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
