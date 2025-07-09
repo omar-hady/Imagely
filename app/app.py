@@ -12,3 +12,7 @@ if __name__ == '__main__':
 @app.route('/explore')
 def explore():
     return render_template('explore.html')
+
+@app.route('/save')
+def save():
+    return render_template('save.html')

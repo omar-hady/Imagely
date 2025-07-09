@@ -9,45 +9,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="{{ url_for('static', filename='js/explore.js') }}" defer></script>
+
 </head>
 <body>
-    <header class="pinterest-header">
-        <div class="header-wrapper">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Imagely Logo">
-                <span>Imagely</span>
+    <header class="explore-navbar" id="exploreNavbar">
+        <div class="explore-navbar-left">
+            <a href="{{ url_for('index') }}" class="explore-navbar-btn">
+                <i class="ri-arrow-left-line"></i> Back
+            </a>
+        </div>
+        <div class="explore-navbar-center">
+            <div class="explore-search-bar" style="position: relative; width: 100%; max-width: 650px; margin: 0 auto;">
+                <i class="ri-search-line"></i>
+                <input type="text" id="exploreSearchInput" placeholder="Search or filter images..." name="q">
             </div>
-            <div class="search-bar-container">
-                <div class="search-box">
-                    <i class="ri-search-line"></i>
-                    <input type="text" placeholder="Search images, ideas..." name="q">
-                </div>
-            </div>
-            <nav class="nav-actions">
-                <a href="/" >Home</a>
-                <a href="/explore" class="active">Explore</a>
-                <a href="/generate">Generate</a>
-                <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="User Avatar" class="avatar">
-            </nav>
+        </div>
+        <div class="explore-navbar-right">
+            <a href="{{ url_for('save') }}" class="explore-navbar-btn">
+                <i class="ri-heart-line"></i> Save
+            </a>
         </div>
     </header>
     <main class="explore-main">
-        <h1 class="explore-title">Discover Inspiration</h1>
-        <section class="gallery">
-            <ul class="images"></ul>
-            <button class="load-more">Load More</button>
-        </section>
+        <div class="explore-container">
+            <h1 class="explore-title">Discover Inspiration</h1>
+            <div class="imagely-gallery">
+                <div class="images"></div>
+                <button class="load-more">
+                    <i class="ri-refresh-line"></i>
+                    Load More
+                </button>
+            </div>
+        </div>
     </main>
     <div class="lightbox">
         <div class="wrapper">
             <header>
                 <div class="photographer">
-                    <i class="uil uil-camera"></i>
+                    <i class="ri-camera-line"></i>
                     <span></span>
                 </div>
                 <div class="buttons">
-                    <i class="uil uil-import"></i>
-                    <i class="uil uil-times"></i>
+                    <i class="ri-download-line" title="Download Image"></i>
+                    <i class="ri-close-line" title="Close"></i>
                 </div>
             </header>
             <div class="preview-img">

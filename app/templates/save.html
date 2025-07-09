@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Photos | Imagely</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='js/save.js') }}" defer></script>
+</head>
+<body>
+    <header class="nav-unique-save" style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 1.5rem 2rem;">
+        <div class="nav-save-left">
+            <a href="{{ url_for('index') }}" class="nav-back-btn-unique" style="font-size:1.7rem;display:flex;align-items:center;gap:0.5rem;">
+                <i class="ri-arrow-left-line"></i> Back
+            </a>
+        </div>
+        <div class="nav-save-center" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Imagely Logo" style="height:40px;display:block;">
+        </div>
+        <div class="nav-save-right">
+            <a href="{{ url_for('explore') }}" class="nav-save-btn"><i class="ri-compass-3-line"></i> Explore</a>
+        </div>
+    </header>
+    <main class="save-main">
+        <div class="save-container">
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display:none;">
+                <div class="empty-icon"><i class="ri-heart-line"></i></div>
+                <h2>No Saved Photos</h2>
+                <p>You haven't saved any photos yet. Start exploring and save your favorites!</p>
+            </div>
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state" style="display:none;">
+                <div class="loading-spinner"></div>
+                <p>Loading your saved photos...</p>
+            </div>
+            <!-- Saved Gallery -->
+            <div id="savedGallery" class="saved-gallery">
+                <div id="savedImages" class="saved-images"></div>
+            </div>
+        </div>
+    </main>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="wrapper">
+            <header>
+                <div class="photo-info">
+                    <div class="photographer-info">
+                        <i class="ri-camera-line"></i>
+                        <span id="lightboxPhotographer"></span>
+                    </div>
+                    <div class="photo-meta">
+                        <span id="lightboxDate"></span>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="action-btn" id="shareBtn" title="Share"><i class="ri-share-line"></i></button>
+                    <button class="action-btn" id="unsaveBtn" title="Remove from saved" onclick="saveManager.removePhoto(document.getElementById('lightbox').dataset.photoId); saveManager.hideLightbox();"><i class="ri-heart-fill"></i></button>
+                    <button class="action-btn" id="downloadBtn" title="Download" onclick="saveManager.downloadPhoto(document.getElementById('lightboxImage').src)"><i class="ri-download-line"></i></button>
+                    <button class="action-btn" id="closeLightbox" title="Close"><i class="ri-close-line"></i></button>
+                </div>
+            </header>
+            <div class="preview-img">
+                <div class="img"><img id="lightboxImage" src="" alt="preview-img"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal-overlay">
+        <div class="modal-content share-modal">
+            <div class="modal-header">
+                <h3>Share Photo</h3>
+                <button class="close-modal" id="closeShareModal"><i class="ri-close-line"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <button class="share-option" data-platform="facebook"><i class="ri-facebook-fill"></i><span>Facebook</span></button>
+                    <button class="share-option" data-platform="twitter"><i class="ri-twitter-x-line"></i><span>Twitter</span></button>
+                    <button class="share-option" data-platform="pinterest"><i class="ri-pinterest-fill"></i><span>Pinterest</span></button>
+                    <button class="share-option" data-platform="copy"><i class="ri-link"></i><span>Copy Link</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
