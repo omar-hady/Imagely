@@ -104,28 +104,6 @@ class SavePhotosManager {
         `).join('');
 
         imagesContainer.innerHTML = html;
-        // بعد عرض الصور، اجعل كل صورة تظهر عند التحميل
-        const imgs = imagesContainer.querySelectorAll('img');
-        imgs.forEach(img => {
-            img.onload = () => {
-                img.style.opacity = '1';
-            };
-            if (img.complete) {
-                img.style.opacity = '1';
-            }
-        });
-
-        const saveBtns = imagesContainer.querySelectorAll('.action-btn');
-        saveBtns.forEach(btn => {
-            btn.onclick = (e) => {
-                e.stopPropagation();
-                const photoId = btn.getAttribute('data-id');
-                const photo = this.savedPhotos.find(p => p.id === photoId);
-                if (photo) {
-                    this.removePhoto(photoId);
-                }
-            };
-        });
     }
 
     // Show lightbox
@@ -335,8 +313,4 @@ class SavePhotosManager {
 const saveManager = new SavePhotosManager();
 
 // Make it globally available for onclick handlers
-window.saveManager = saveManager;
-
-function getRandomPage() {
-    return Math.floor(Math.random() * 50) + 1; // من 1 إلى 50 فقط
-} 
+window.saveManager = saveManager; 

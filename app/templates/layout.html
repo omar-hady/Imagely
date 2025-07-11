@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-g">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Imagely - {% block title %}{% endblock %}</title>
@@ -40,7 +40,7 @@
         <li class="nav-link"><a href="{{ url_for('index') }}" class="active">Home</a></li>
         <li class="nav-link"><a href="{{ url_for('explore') }}">Explore</a></li>
         <li class="nav-link"><a href="{{ url_for('save') }}">Saved</a></li>
-        <li class="nav-link"><a href="#">Generate</a></li>
+        <li class="nav-link"><a href="{{ url_for('generate') }}">Generate</a></li>
 
     </ul>
 </nav>
@@ -62,7 +62,7 @@
     <p><a href="{{ url_for('index') }}">Home</a></p>
       <p><a href="{{ url_for('explore') }}">Explore</a></p>
       <p><a href="{{ url_for('save') }}">Saved</a></p>
-      <p><a href="#">Generate</a></p>
+      <p><a href="{{ url_for('generate') }}">Generate</a></p>
     </div>
     <div class="col col3">
       <p>Privacy Policy</p>

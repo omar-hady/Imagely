@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator | Imagely</title>
-    <link rel="stylesheet" href="../../app/static/css/styles.css">
-    <script src="script.js" defer></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
 </head>
 <body>
     
@@ -33,16 +30,16 @@
     </section>
     <section class="image-gallery">
         <div class="image-card">
-            <img src="images/img-1.jpg" alt="image">
+            <img src="{{ url_for('static', filename='images/Explore/1.jpg') }}" alt="Generated image">
         </div>
         <div class="image-card">
-            <img src="images/img-2.jpg" alt="image">
+            <img src="{{ url_for('static', filename='images/Explore/2.jpg') }}" alt="Generated image">
         </div>
         <div class="image-card">
-            <img src="images/img-3.jpg" alt="image">
+            <img src="{{ url_for('static', filename='images/Explore/3.jpg') }}" alt="Generated image">
         </div>
         <div class="image-card">
-            <img src="images/img-4.jpg" alt="image">
+            <img src="{{ url_for('static', filename='images/Explore/4.jpg') }}" alt="Generated image">
         </div>
     </section>
     

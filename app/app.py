@@ -16,3 +16,7 @@ def explore():
 @app.route('/save')
 def save():
     return render_template('save.html')
+
+@app.route('/generate')
+def generate():
+    return render_template('generate.html')

@@ -5,15 +5,11 @@
 {% block content %}
     <!-- Hero Section -->
     <section class="home" id="home">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        
         <div class="content">
             <h1>Unleash your creativity in seconds.</h1>
             <h1><span class="typewriter"></span></h1>
             <p>Experience a beautiful, intuitive platform to <strong>discover, generate, and save</strong> stunning visuals effortlessly...</p>
-            <a href="#"><button>Get Inspired</button></a>
+            <a href="{{ url_for('explore') }}"><button>Get Inspired</button></a>
         </div>
     </section>
 

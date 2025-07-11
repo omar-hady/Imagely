@@ -173,18 +173,7 @@ function renderImages() {
     imagesWrapper.innerHTML = html;
     imagesWrapper.style.opacity = '1';
 
-    // بعد عرض الصور، اجعل كل صورة تظهر عند التحميل
-    const imgs = imagesWrapper.querySelectorAll('img');
-    imgs.forEach(img => {
-        img.onload = () => {
-            img.style.opacity = '1';
-        };
-        if (img.complete) {
-            img.style.opacity = '1';
-        }
-    });
-
-    // حل مشكلة زر الحفظ: استخدم data-photo-id وevent delegation
+    // Add event listeners to save buttons
     const saveBtns = imagesWrapper.querySelectorAll('.save-btn');
     saveBtns.forEach(btn => {
         btn.onclick = (e) => {
@@ -231,13 +220,10 @@ function isPhotoSaved(photoId) {
     return savedPhotos.some(p => p.id === photoId);
 }
 
-// Helper: احصل على رقم صفحة عشوائي (من 1 إلى 20 فقط لتقليل الصفحات الفارغة)
-function getRandomPage() {
-    return Math.floor(Math.random() * 20) + 1;
-}
 
-// جلب الصور مع إعادة المحاولة تلقائياً إذا لم يجد صور (حد أقصى 10 محاولات)
-const getImages = async (apiURL, tryCount = 0) => {
+
+// Fetch images from API
+const getImages = async (apiURL) => {
     if (!loadMoreBtn || isLoading) return;
     isLoading = true;
     const originalText = loadMoreBtn.innerHTML;
@@ -253,23 +239,15 @@ const getImages = async (apiURL, tryCount = 0) => {
         }
         const data = await response.json();
         if (!data.photos || data.photos.length === 0) {
-            if (tryCount < 10) {
-                // جرب صفحة عشوائية أخرى
-                const randomPage = getRandomPage();
-                await getImages(`https://api.pexels.com/v1/curated?page=${randomPage}&per_page=${perPage}`, tryCount + 1);
-                return;
-            } else {
-                // بعد 10 محاولات، أظهر رسالة خطأ
-                if (imagesWrapper) {
-                    imagesWrapper.innerHTML = `
-                        <div class="loading-placeholder" style="break-inside: avoid; margin-bottom: 2rem;">
-                            <i class="ri-error-warning-line" style="font-size: 3rem; color: #dc3545; margin-bottom: 1rem;"></i>
-                            <p>Sorry, couldn't load images. Please try again later.</p>
-                        </div>
-                    `;
-                }
-                return;
+            if (imagesWrapper) {
+                imagesWrapper.innerHTML = `
+                    <div class="loading-placeholder" style="break-inside: avoid; margin-bottom: 2rem;">
+                        <i class="ri-error-warning-line" style="font-size: 3rem; color: #dc3545; margin-bottom: 1rem;"></i>
+                        <p>No images found. Please try a different search.</p>
+                    </div>
+                `;
             }
+            return;
         }
         generateHTML(data.photos);
     } catch (err) {
@@ -360,8 +338,8 @@ const initExplore = () => {
             </div>
         `;
     }
-    // كل مرة تفتح الصفحة، استخدم صفحة عشوائية
-    currentPage = getRandomPage();
+    
+    currentPage = 1;
     getImages(`https://api.pexels.com/v1/curated?page=${currentPage}&per_page=${perPage}`);
     
     if (loadMoreBtn) {

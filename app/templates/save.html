@@ -9,21 +9,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="{{ url_for('static', filename='js/save.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
-    <header class="nav-unique-save" style="display: flex; align-items: center; justify-content: space-between; position: relative; padding: 1.5rem 2rem;">
-        <div class="nav-save-left">
-            <a href="{{ url_for('index') }}" class="nav-back-btn-unique" style="font-size:1.7rem;display:flex;align-items:center;gap:0.5rem;">
+    <header class="explore-navbar" id="exploreNavbar">
+        <div class="explore-navbar-left">
+            <a href="{{ url_for('index') }}" class="explore-navbar-btn">
                 <i class="ri-arrow-left-line"></i> Back
             </a>
         </div>
-        <div class="nav-save-center" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Imagely Logo" style="height:40px;display:block;">
+        <div class="explore-navbar-center">
+            <h2>Saved Photos</h2>
         </div>
-        <div class="nav-save-right">
-            <a href="{{ url_for('explore') }}" class="nav-save-btn"><i class="ri-compass-3-line"></i> Explore</a>
+        <div class="explore-navbar-right">
+            <a href="{{ url_for('explore') }}" class="explore-navbar-btn">
+                <i class="ri-magic-line"></i> Explore
+            </a>
         </div>
-    </header>
+    </header> 
     <main class="save-main">
         <div class="save-container">
             <!-- Empty State -->
