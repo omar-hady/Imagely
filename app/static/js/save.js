@@ -24,11 +24,26 @@ class SavePhotosManager {
 
     // Remove photo from saved
     removePhoto(photoId) {
+        console.log('Removing photo:', photoId);
         const index = this.savedPhotos.findIndex(p => p.id === photoId);
         if (index !== -1) {
             this.savedPhotos.splice(index, 1);
             this.saveToStorage();
-            this.updateUI();
+            
+            // إزالة الصورة من الصفحة مباشرة مع تأثير بصري
+            const photoElement = document.querySelector(`[data-id="${photoId}"]`);
+            console.log('Photo element found:', photoElement);
+            if (photoElement) {
+                photoElement.classList.add('removing');
+                console.log('Added removing class');
+                
+                setTimeout(() => {
+                    this.updateUI();
+                }, 300);
+            } else {
+                this.updateUI();
+            }
+            
             this.showNotification('Photo removed from saved', 'info');
         }
     }
@@ -74,8 +89,8 @@ class SavePhotosManager {
         }
 
         const html = this.savedPhotos.map(photo => `
-            <div class="saved-card" data-id="${photo.id}" onclick="saveManager.showLightbox('${photo.id}')">
-                <div class="card-image">
+            <div class="saved-card" data-id="${photo.id}">
+                <div class="card-image" onclick="saveManager.showLightbox('${photo.id}')" style="cursor: pointer;">
                     <img src="${photo.src.medium}" alt="${photo.title || 'Saved photo'}" loading="lazy">
                     <div class="card-overlay">
                         <div class="overlay-content">
@@ -86,7 +101,7 @@ class SavePhotosManager {
                                 </div>
                             </div>
                             <div class="card-actions">
-                                <button class="action-btn" onclick="saveManager.removePhoto('${photo.id}'); event.stopPropagation();" title="Remove from saved">
+                                <button class="action-btn" onclick="event.stopPropagation(); saveManager.removePhoto('${photo.id}');" title="Remove from saved">
                                     <i class="ri-heart-fill"></i>
                                 </button>
                                 <button class="action-btn" onclick="saveManager.downloadPhoto('${photo.src.large2x}'); event.stopPropagation();" title="Download">
@@ -96,7 +111,7 @@ class SavePhotosManager {
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer" onclick="saveManager.showLightbox('${photo.id}')" style="cursor: pointer;">
                     <h3 class="photo-title">${photo.title || 'Untitled'}</h3>
                     <p class="saved-date">${this.formatDate(photo.savedAt)}</p>
                 </div>
@@ -108,8 +123,12 @@ class SavePhotosManager {
 
     // Show lightbox
     showLightbox(photoId) {
+        console.log('Showing lightbox for photo:', photoId);
         const photo = this.savedPhotos.find(p => p.id === photoId);
-        if (!photo) return;
+        if (!photo) {
+            console.log('Photo not found');
+            return;
+        }
 
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
@@ -123,6 +142,7 @@ class SavePhotosManager {
         lightbox.dataset.photoId = photoId;
         lightbox.classList.add('show');
         document.body.style.overflow = 'hidden';
+        console.log('Lightbox shown');
     }
 
     // Hide lightbox

@@ -201,6 +201,7 @@ a {
     text-align: center;
     position: relative;
     z-index: 2;
+    min-height: 400px;
 }
 
 .home .content h1 {
@@ -211,6 +212,18 @@ a {
     font-weight: 800;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
+}
+
+/* Typewriter effect styling */
+.home .content .typewriter {
+    display: inline-block;
+    min-width: 600px;
+    height: 6.6rem;
+    line-height: 6.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    vertical-align: top;
 }
 
 .home .content p {
@@ -617,9 +630,10 @@ footer::before {
 }
 
 .creations-container {
-    max-width: 1200px;
+    max-width: 98vw;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0;
 }
 
 /* Loading Placeholder Styles */
@@ -1320,14 +1334,20 @@ footer::before {
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
     position: relative;
     break-inside: avoid;
     margin-bottom: 2rem;
     display: block;
 }
 
-.saved-card:hover {
+.saved-card.removing {
+    transform: scale(0.8) !important;
+    opacity: 0 !important;
+    transition: all 0.3s ease !important;
+    pointer-events: none;
+}
+
+.saved-card:hover:not(.removing) {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
@@ -1346,7 +1366,7 @@ footer::before {
     opacity: 1 !important;
 }
 
-.saved-card:hover .card-image img {
+.saved-card:hover:not(.removing) .card-image img {
     transform: scale(1.1);
 }
 
@@ -1364,7 +1384,7 @@ footer::before {
     padding: 2rem;
 }
 
-.saved-card:hover .card-overlay {
+.saved-card:hover:not(.removing) .card-overlay {
     opacity: 1;
 }
 
@@ -1426,7 +1446,7 @@ footer::before {
     color: var(--color-darkText);
 }
 
-.saved-card .action-btn:hover {
+.saved-card:not(.removing) .action-btn:hover {
     background: #fff;
     transform: scale(1.1);
 }
@@ -1956,14 +1976,11 @@ footer::before {
 /* ====== END: SAVE PHOTOS PAGE STYLES ====== */
 
 .latest-saved-marquee {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    height: 220px;
-    margin: 2rem 0 4rem 0;
-    display: flex;
-    align-items: center;
-    background: none;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0;
+    padding: 0;
 }
 .latest-saved-marquee::before,
 .latest-saved-marquee::after {
@@ -1977,17 +1994,17 @@ footer::before {
 }
 .latest-saved-marquee::before {
     left: 0;
-    background: linear-gradient(to right, #fff 50%, transparent 100%);
+    background: linear-gradient(to right, #fff 10%, transparent 100%);
 }
 .latest-saved-marquee::after {
     right: 0;
-    background: linear-gradient(to left, #fff 50%, transparent 100%);
+    background: linear-gradient(to left, #fff 10%, transparent 100%);
 }
 .latest-saved-marquee-track {
     display: flex;
     align-items: center;
     gap: 1rem;
-    animation: marquee-left 60s linear infinite;
+    animation: marquee-left 10s linear infinite;
     will-change: transform;
     padding: 1rem;
 }
@@ -2207,4 +2224,165 @@ footer::before {
     opacity: 0;
     pointer-events: none;
     transition: transform 0.3s, opacity 0.3s;
+}
+
+/* --- Responsive Enhancements --- */
+@media (max-width: 1200px) {
+  .features-container,
+  .creations-container,
+  .save-container,
+  .explore-container {
+    max-width: 98vw;
+    padding: 0 1rem;
+  }
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .creations-container,
+  .save-container,
+  .explore-container {
+    padding: 0 0.5rem;
+  }
+  .latest-saved-marquee img {
+    height: 120px;
+  }
+}
+@media (max-width: 600px) {
+  .features-section,
+  .creations-section,
+  .faq-section,
+  .newsletter-section,
+  .save-main,
+  .explore-main {
+    padding: 2rem 0 2rem 0;
+  }
+  .features-container,
+  .creations-container,
+  .save-container,
+  .explore-container {
+    max-width: 100vw;
+    padding: 0 0.2rem;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+  .section-title, .newsletter-title {
+    font-size: 2rem;
+  }
+  .section-subtitle, .newsletter-description {
+    font-size: 1.1rem;
+  }
+  .latest-saved-marquee {
+    height: 110px;
+  }
+  .latest-saved-marquee img {
+    height: 90px;
+    min-width: 60px;
+  }
+  .saved-card, .imagely-card {
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+  .saved-card .card-footer, .imagely-card .card-footer {
+    padding: 0.7rem;
+  }
+  .photo-title {
+    font-size: 1.1rem;
+  }
+  .saved-date {
+    font-size: 0.9rem;
+  }
+  .explore-navbar, .explore-navbar-center, .explore-navbar-btn {
+    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+  }
+  .explore-navbar {
+    width: 100vw;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+    padding: 0.5rem 0.2rem;
+  }
+  footer {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding: 2rem 0.5rem;
+  }
+  .col {
+    width: 100%;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+  }
+  .col1 img.footerlogo {
+    position: static;
+    width: 120px;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .features-section,
+  .creations-section,
+  .faq-section,
+  .newsletter-section,
+  .save-main,
+  .explore-main {
+    padding: 1rem 0 1rem 0;
+  }
+  .features-container,
+  .creations-container,
+  .save-container,
+  .explore-container {
+    max-width: 100vw;
+    padding: 0 0.1rem;
+  }
+  .section-title, .newsletter-title {
+    font-size: 1.2rem;
+  }
+  .section-subtitle, .newsletter-description {
+    font-size: 0.9rem;
+  }
+  .latest-saved-marquee {
+    height: 70px;
+  }
+  .latest-saved-marquee img {
+    height: 50px;
+    min-width: 40px;
+  }
+  .explore-navbar {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.1rem;
+  }
+  .explore-navbar-center h2 {
+    font-size: 1rem;
+  }
+  .explore-navbar-btn {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .save-main, .explore-main {
+    margin-top: 80px;
+  }
+  .feature-card {
+    padding: 1rem 0.5rem;
+  }
+  .photo-title {
+    font-size: 0.9rem;
+  }
+  .saved-date {
+    font-size: 0.7rem;
+  }
+  .col1 img.footerlogo {
+    width: 80px;
+  }
 }

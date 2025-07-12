@@ -18,22 +18,28 @@ const typewriterSpan = document.querySelector('.typewriter');
 function typewriterTick() {
   if (!typewriterSpan) return;
   const currentWord = typewriterWords[twIndex];
+  
   if (isDeleting) {
     charIndex--;
-    typewriterSpan.textContent = currentWord.substring(0, charIndex);
+    // استخدم مسافة غير مرئية للحفاظ على المساحة
+    const visibleText = currentWord.substring(0, charIndex);
+    const invisibleSpaces = '&nbsp;'.repeat(Math.max(0, currentWord.length - charIndex));
+    typewriterSpan.innerHTML = visibleText + invisibleSpaces;
   } else {
     charIndex++;
-    typewriterSpan.textContent = currentWord.substring(0, charIndex);
+    const visibleText = currentWord.substring(0, charIndex);
+    const invisibleSpaces = '&nbsp;'.repeat(Math.max(0, currentWord.length - charIndex));
+    typewriterSpan.innerHTML = visibleText + invisibleSpaces;
   }
 
-  let delay =150;
+  let delay = 60; // أسرع
   if (!isDeleting && charIndex === currentWord.length) {
-    delay = 1000;
+    delay = 600; // توقف أقصر بعد نهاية الكلمة
     isDeleting = true;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     twIndex = (twIndex + 1) % typewriterWords.length;
-    delay = 1500;
+    delay = 800; // توقف أقصر بعد المسح
   }
   setTimeout(typewriterTick, delay);
 }
@@ -127,7 +133,12 @@ if (newsletterForm) {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Start typewriter effect
-    if (typewriterSpan) typewriterTick();
+    if (typewriterSpan) {
+        // تهيئة النص الأولي
+        const firstWord = typewriterWords[0];
+        typewriterSpan.innerHTML = '&nbsp;'.repeat(firstWord.length);
+        typewriterTick();
+    }
 });
 
 
