@@ -32,22 +32,21 @@
 
     <!-- header section start -->
 <header>
-<!-- navbar start -->
-<nav>
-
+  <nav>
     <ul class="nav-links">
-
-        <li class="nav-link"><a href="{{ url_for('index') }}" class="active">Home</a></li>
-        <li class="nav-link"><a href="{{ url_for('explore') }}">Explore</a></li>
-        <li class="nav-link"><a href="{{ url_for('save') }}">Saved</a></li>
-        <li class="nav-link"><a href="{{ url_for('generate') }}">Generate</a></li>
-
+      <li class="nav-link"><a href="{{ url_for('index') }}" class="active">Home</a></li>
+      <li class="nav-link"><a href="{{ url_for('explore') }}">Explore</a></li>
+      <li class="nav-link"><a href="{{ url_for('save') }}">Saved</a></li>
+      <li class="nav-link"><a href="{{ url_for('generate') }}">Generate</a></li>
     </ul>
-</nav>
-<!-- navbar end -->
+  </nav>
 
+  </button>
+
+  </button>
 </header>
-    <!-- header section end -->
+
+<!-- header section end -->
 
     {% block content %}{% endblock %}
 
@@ -75,6 +74,26 @@
 
 
 <!-- footer end -->
+
+<!-- Bottom Navigation Bar for Mobile -->
+<nav class="bottom-nav">
+  <a href="{{ url_for('index') }}" class="bottom-nav-link">
+    <i class="ri-home-5-line"></i>
+    <span>Home</span>
+  </a>
+  <a href="{{ url_for('explore') }}" class="bottom-nav-link">
+    <i class="ri-compass-3-line"></i>
+    <span>Explore</span>
+  </a>
+  <a href="{{ url_for('save') }}" class="bottom-nav-link">
+    <i class="ri-heart-line"></i>
+    <span>Saved</span>
+  </a>
+  <a href="{{ url_for('generate') }}" class="bottom-nav-link">
+    <i class="ri-magic-line"></i>
+    <span>Generate</span>
+  </a>
+</nav>
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

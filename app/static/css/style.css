@@ -11,11 +11,20 @@
     --color-grey: #727586;
     --color-btn: #9d2be4;
     --color-pink: #5045e5;
+    /* Responsive Font Sizes */
+    --fs-title: clamp(2rem, 4vw, 3.5rem);
+    --fs-subtitle: clamp(1.2rem, 2.5vw, 2rem);
+    --fs-para: clamp(1rem, 2vw, 1.6rem);
+    --fs-btn: clamp(1rem, 2vw, 1.4rem);
+    --fs-nav: clamp(1.8rem, 2vw, 1.2rem);
+    --fs-card-title: clamp(1.2rem, 2.5vw, 2.2rem);
+    --fs-card-desc: clamp(1rem, 2vw, 1.6rem);
+    --fs-faq-q: clamp(1.1rem, 2vw, 1.8rem);
+    --fs-faq-a: clamp(1rem, 2vw, 1.6rem);
+    --fs-footer: clamp(1rem, 2vw, 1.4rem);
+    --fs-typewriter: clamp(2rem, 5vw, 3rem);
     /* Font Size */
-    --fs-title: 24px;
     --fs-price: 48px;
-    --fs-para: 14px;
-    --fs-btnAllfeat: 16px;
     --fs-rupeeMonth: 20px;
     --fs-sm: 1.4rem;
     --fs-md: 1.6rem;
@@ -49,7 +58,7 @@ html {
 .logo {
     position: absolute; 
     top: 2.5rem;
-    left: 15rem;
+    left: 12rem;
     height: 36px;
     cursor: pointer; 
     width: auto;
@@ -621,7 +630,19 @@ footer::before {
     color: var(--burble);
 }
 
-/* ====== END: Enhanced Home Page Styles ====== */
+/* =======HomePage Responsive ======*/
+
+@media (max-width: 425px) {
+    header {
+        display: none;
+    }
+    .nav-links {
+        display: none;
+    }
+    .explore-btn {
+        display: none;
+    }
+}
 
 /* Creations Section */
 .creations-section {
@@ -2226,4 +2247,117 @@ footer::before {
     transition: transform 0.3s, opacity 0.3s;
 }
 
+/* تطبيق المتغيرات على الكلاسات الرئيسية */
+.section-title, .newsletter-title, .explore-title, .image-generator h1, .empty-state h2, .modal-header h3, .save-main h2 {
+    font-size: var(--fs-title) !important;
+}
+.section-subtitle, .newsletter-description {
+    font-size: var(--fs-subtitle) !important;
+}
+.feature-title, .photo-title, .card-title, .faq-question {
+    font-size: var(--fs-card-title) !important;
+}
+.feature-description, .faq-answer p, .photo-meta, .card-description, .empty-state p, .no-results p {
+    font-size: var(--fs-card-desc) !important;
+}
+.home .content p, .image-generator p {
+    font-size: var(--fs-para) !important;
+}
+button, .btn-primary, .btn-secondary, .explore-btn, .generate-btn, .load-more, .newsletter-form button {
+    font-size: var(--fs-btn) !important;
+}
+.nav-link, .drop-down li, .navbar-right, .navbar-center, .nav-links {
+    font-size: var(--fs-nav) !important;
+}
+.typewriter {
+    font-size: var(--fs-typewriter) !important;
+}
+footer, .col1 p, .col2, .col3 {
+    font-size: var(--fs-footer) !important;
+}
+
 /* --- Responsive Enhancements --- */
+
+@media (max-width: 700px) {
+  .latest-saved-marquee {
+    width: 100vw;
+    overflow-x: hidden;
+    border-radius: 0;
+    padding: 0;
+    position: relative;
+    margin-left: 0;
+    transform: none;
+  }
+  .latest-saved-marquee-track {
+    gap: 0.5rem;
+    padding: 0.5rem;
+    flex-wrap: nowrap;
+    display: flex;
+    min-width: max-content;
+    animation: marquee-left-mobile 28s linear infinite;
+    will-change: transform;
+  }
+  .latest-saved-marquee img {
+    height: 90px;
+    min-width: 120px;
+    max-width: 160px;
+    border-radius: 10px;
+    margin: 0;
+  }
+  .latest-saved-marquee::before,
+  .latest-saved-marquee::after {
+    display: none;
+  }
+}
+@keyframes marquee-left-mobile {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Bottom Navigation Bar (Mobile Only) */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 60px;
+  background: #fff;
+  border-top: 1px solid #ece9fe;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2000;
+  box-shadow: 0 -2px 12px rgba(157, 43, 228, 0.06);
+}
+.bottom-nav-link {
+  flex: 1;
+  text-align: center;
+  color: var(--color-grey);
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2em 0;
+  transition: color 0.2s;
+}
+.bottom-nav-link i {
+  font-size: 1.7em;
+  margin-bottom: 2px;
+  display: block;
+}
+.bottom-nav-link.active,
+.bottom-nav-link:focus,
+.bottom-nav-link:hover {
+  color: var(--burble);
+}
+@media (min-width: 701px) {
+  .bottom-nav {
+    display: none !important;
+  }
+}
+body {
+  padding-bottom: 60px;
+}

@@ -192,3 +192,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 })();
+
+document.addEventListener('DOMContentLoaded', function() {
+  const bottomNav = document.querySelector('.bottom-nav');
+  if (!bottomNav) return;
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  function handleScroll() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 40) {
+      // Scroll down: hide
+      bottomNav.style.transform = 'translateY(100%)';
+      bottomNav.style.opacity = '0';
+      bottomNav.style.pointerEvents = 'none';
+    } else if (currentY < lastScrollY - 5) {
+      // Scroll up: show
+      bottomNav.style.transform = 'translateY(0)';
+      bottomNav.style.opacity = '1';
+      bottomNav.style.pointerEvents = 'auto';
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(handleScroll);
+      ticking = true;
+    }
+  });
+  // Initial state
+  bottomNav.style.transition = 'transform 0.3s, opacity 0.3s';
+});
