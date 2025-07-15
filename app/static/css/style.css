@@ -12,7 +12,7 @@
     --color-btn: #9d2be4;
     --color-pink: #5045e5;
     /* Responsive Font Sizes */
-    --fs-title: clamp(2rem, 4vw, 3.5rem);
+    --fs-title: clamp(2.2rem, 7vw, 5.5rem);
     --fs-subtitle: clamp(1.2rem, 2.5vw, 2rem);
     --fs-para: clamp(1rem, 2vw, 1.6rem);
     --fs-btn: clamp(1rem, 2vw, 1.4rem);
@@ -22,7 +22,7 @@
     --fs-faq-q: clamp(1.1rem, 2vw, 1.8rem);
     --fs-faq-a: clamp(1rem, 2vw, 1.6rem);
     --fs-footer: clamp(1rem, 2vw, 1.4rem);
-    --fs-typewriter: clamp(2rem, 5vw, 3rem);
+    --fs-typewriter: clamp(2.2rem, 8vw, 4.2rem);
     /* Font Size */
     --fs-price: 48px;
     --fs-rupeeMonth: 20px;
@@ -641,7 +641,7 @@ footer::before {
 
 /* =======HomePage Responsive ======*/
 
-@media (max-width: 425px) {
+@media (max-width: 600px) {
     header {
         display: none;
     }
@@ -2434,5 +2434,51 @@ body {
     font-size: 1.1rem;
     margin: 0 0.3rem;
     padding: 0.4rem 0.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .home .content {
+    padding: 0 0.5rem !important;
+    min-height: 300px !important;
+  }
+  .home .content h1 {
+    font-size: 2.1rem !important;
+    margin-bottom: 0.7rem !important;
+    padding: 0 0.2rem !important;
+    line-height: 1.2 !important;
+  }
+  .home .content .typewriter {
+    min-width: 0 !important;
+    font-size: 1.5rem !important;
+    height: auto !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .home .content p {
+    font-size: 1.1rem !important;
+    color: #665A90 !important;
+    padding: 0 0.5rem !important;
+    margin-top: 0.5rem !important;
+    line-height: 1.7 !important;
+    text-align: center !important;
+  }
+  .home .content button, .home .content a button {
+    width: 90vw !important;
+    min-width: 0 !important;
+    font-size: 1.1rem !important;
+    height: 3.2rem !important;
+    margin-top: 2rem !important;
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .home .content h1 {
+    font-size: 1.5rem !important;
+  }
+  .home .content button, .home .content a button {
+    font-size: 1rem !important;
+    height: 2.7rem !important;
   }
 }
