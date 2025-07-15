@@ -9,29 +9,48 @@ Whether you're browsing for aesthetic references, downloading what you love, or 
 
 ---
 
+## 🎬 Video Demo  
+**[Watch on YouTube](https://youtu.be/535IqdKWwe0)**
+
+---
+
+## 📄 Description
+
+**Imagely** is a full-stack image platform built using Python and Flask for the backend and modern HTML/CSS with Tailwind for the frontend. It enables users to:
+
+- Browse and explore a gallery of curated visuals
+- Like and download images they enjoy
+- Generate new AI images through prompt-based input (integrated with Hugging Face or external APIs)
+
+It is designed to be responsive, lightweight, and visually engaging — ideal for designers, content creators, and visual thinkers.
+
+The project structure is modular, and the codebase is well-documented, making it easy to extend or integrate additional features.
+
+---
+
 ## ✨ Features
 
 - 🖼️ **Image Gallery (Explore)**  
-  Clean, grid layout for image discovery and inspiration.
+  Clean, grid layout for discovering and browsing visual inspiration.
 
 - 💜 **Like & Download**  
-  Users can easily like and download images.
+  Simple interaction to like or download any image you find interesting.
 
 - 🤖 **AI Image Generator**  
-  Simple prompt-based generation using AI (compatible with external APIs or local models).
+  Input a text prompt and generate beautiful visuals with AI.
 
-- 💡 **Modern UI**  
-  Fully responsive, stylish interface & custom styling.
+- 📱 **Responsive UI**  
+  Built to adapt across devices — desktop, tablet, and mobile.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer       | Tech                                                                 |
-|-------------|----------------------------------------------------------------------|
-| Backend     | Python Flask, Jinja2 Templates                                       |
-| Frontend    | HTML5, CSS3, JavaScript (Vanilla), TailwindCSS / Custom CSS          |
-| AI Support  | Plug-and-play ready for Stable Diffusion API / Hugging Face / etc.   |
+| Layer       | Technologies                                                          |
+|-------------|------------------------------------------------------------------------|
+| Backend     | Python (Flask), Jinja2 Templates                                       |
+| Frontend    | HTML5, CSS3, JavaScript (Vanilla), Tailwind CSS                        |
+| AI Support  | Hugging Face Inference API / Stability.ai / Local AI (Plug-and-Play)   |
 
 ---
 
@@ -41,6 +60,7 @@ Whether you're browsing for aesthetic references, downloading what you love, or 
 ```bash
 git clone https://github.com/omar-hady/Imagely.git
 cd Imagely
+
 ```
 
 ### 📦Install dependencies:
