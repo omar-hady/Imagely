@@ -619,15 +619,24 @@ footer::before {
 .col2 p,
 .col3 p {
     padding: 0.6rem 0rem;
-
+    transition: color 0.2s, background 0.2s;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.col3:hover {
+.col2 p:hover, .col3 p:hover {
     color: var(--burble);
+    background: rgba(157, 43, 228, 0.07);
 }
 
-.col2:hover {
-    color: var(--burble);
+.col2, .col3 {
+  background-color: #f2e7fa;
+  opacity: 80%;
+  border-radius: calc(0.5 * var(--m));
+  font-weight: 510;
+  font-size: 17px;
+  color: #2a1863;
+  /* Remove cursor:pointer from column, move to p */
 }
 
 /* =======HomePage Responsive ======*/
@@ -2360,4 +2369,70 @@ footer, .col1 p, .col2, .col3 {
 }
 body {
   padding-bottom: 60px;
+}
+
+@media (max-width: 700px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 3rem 1vw 1rem 1vw;
+  }
+
+  .col2 {
+    display: none;
+  }
+
+  .col {
+    width: 100%;
+    align-items: center;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  .col1 img.footerlogo {
+    position: static;
+    width: 120px;
+    margin-bottom: 1rem;
+    left: unset;
+    bottom: unset;
+  }
+  .col1 p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+  .col3 {
+    background: none;
+    border-radius: 0;
+    font-size: 1.5rem;
+    opacity: 1;
+    margin-bottom: 1.5rem;
+    box-shadow: none;
+  }
+  .col3 p {
+    display: inline-block;
+    margin: 0 0.7rem;
+    padding: 0.5rem 0.7rem;
+    font-size: 1.3rem;
+  }
+  .col3 p {
+    width: auto;
+    text-align: center;
+  }
+  .backdrop {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+  footer {
+    padding: 2rem 0.5vw 1rem 0.5vw;
+  }
+  .col1 img.footerlogo {
+    width: 90px;
+  }
+  .col2 p, .col3 p {
+    font-size: 1.1rem;
+    margin: 0 0.3rem;
+    padding: 0.4rem 0.5rem;
+  }
 }
