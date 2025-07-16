@@ -9,11 +9,6 @@ Whether you're browsing for aesthetic references, downloading what you love, or 
 
 ---
 
-## 🎬 Video Demo  
-**[Watch on YouTube](https://youtu.be/535IqdKWwe0)**
-
----
-
 ## 📄 Description
 
 **Imagely** is a full-stack image platform built using Python and Flask for the backend and modern HTML/CSS with Tailwind for the frontend. It enables users to:
