@@ -17,6 +17,3 @@ def save():
 @app.route('/generate')
 def generate():
     return render_template('generate.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
