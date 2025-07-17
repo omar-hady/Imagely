@@ -4,7 +4,7 @@ Imagely is a sleek, modern image inspiration platform designed for creators of a
 Whether you're browsing for aesthetic references, downloading what you love, or generating your own AI-powered images — Imagely delivers a seamless and immersive experience.
 
 <p align="center">
-  <img src="app/static/images/logo.png" alt="Imagely Banner" width="70%">
+  <img src="/static/images/logo.png" alt="Imagely Banner" width="70%">
 </p>
 
 ---
