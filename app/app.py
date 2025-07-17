@@ -6,9 +6,6 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
 @app.route('/explore')
 def explore():
     return render_template('explore.html')
@@ -20,3 +17,6 @@ def save():
 @app.route('/generate')
 def generate():
     return render_template('generate.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
